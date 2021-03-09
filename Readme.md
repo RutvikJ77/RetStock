@@ -1,4 +1,6 @@
-![Logo](/assets/retstock.png)
+<p align="center">
+  <img src="/assets/retstock.png">
+</p>
 
 ## Inspiration
 With Retail Investment taking a storm in the world of finance. We decided to take a look at how social media texting affects market prices.
