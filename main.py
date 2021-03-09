@@ -53,7 +53,7 @@ def matplot():
     fig, ax = plt.subplots(figsize=(8, 8))
     data.sort_values(by='count').plot.barh(x='words', y='count', ax=ax, color="purple")
 
-    ax.set_title("Common Words Found in Tweets (Without Stop Words)")
+    ax.set_title("Common Words Found in Tweets and Positive Sentiments")
     return fig
 
 st.markdown("## Retail Investment Analysis")
@@ -66,7 +66,11 @@ tickerData = yf.Ticker(Tickerdict[selected_company])
 day_range = st.sidebar.selectbox("Select Time duration for analysis:",["2 Weeks","1 Month","1 Year","5 Years"])
 tweets_fetch = st.sidebar.selectbox("Tweets to fetch:",[50,100,500,1000])
 
+col1, col2 = st.beta_columns([2,2])
+
+col1.subheader("Word count and sentiment plot")
+col1.pyplot(fig=matplot())
+
 tickerDf = tickerData.history(period=Duration[day_range])
-st.write("### " + selected_company + " Closing Price")
-st.line_chart(tickerDf.Close)
-st.pyplot(fig=matplot())
+col2.subheader(selected_company + " Closing Price")
+col2.line_chart(tickerDf.Close)
